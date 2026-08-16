@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ThemeToggle from "@/components/theme-toggle";
 import Reveal from "@/components/reveal";
 import CertificateCard from "@/components/certificate-card";
@@ -18,7 +19,7 @@ const PROFILE = {
   name: "Nanthaphat Phetsanghan",
   handle: "lsupwp",
   title: "Cybersecurity Student & Security Developer",
-  bio: "นักศึกษาปริญญาตรีสาขาความปลอดภัยไซเบอร์ มหาวิทยาลัยขอนแก่น มีความชื่นชอบและสนใจเชิงลึกในด้าน Penetration Testing, Web Exploitation, การสร้าง Security Automation Tools ด้วย Python & Go รวมถึงการประยุกต์ใช้ AI / Local LLM ในงาน Security และการใช้งาน Linux System",
+  bio: "Undergraduate student in Cybersecurity at Khon Kaen University. Deep interest in Penetration Testing, Web Exploitation, building Security Automation Tools with Python & Go, applying AI / Local LLMs in security, and Linux system administration.",
 };
 
 const EMAIL = "lsupwp@gmail.com";
@@ -188,10 +189,15 @@ export default function Home() {
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
                 <div className="absolute -inset-4 rounded-full bg-[conic-gradient(from_0deg,#2563eb,transparent,#2563eb,transparent)] opacity-60 blur-2xl animate-[spin_6s_linear_infinite]" />
-                <div className="avatar placeholder relative">
-                  <div className="w-48 rounded-full bg-gradient-to-br from-primary to-zinc-900 text-base-content sm:w-56">
-                    <span className="text-5xl font-bold text-white">NP</span>
-                  </div>
+                <div className="relative h-48 w-48 overflow-hidden rounded-full ring-4 ring-primary/40 sm:h-56 sm:w-56">
+                  <Image
+                    src="/profile.jpeg"
+                    alt="Nanthaphat Phetsanghan"
+                    width={224}
+                    height={224}
+                    priority
+                    className="h-full w-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -213,8 +219,7 @@ export default function Home() {
                     <h3 className="card-title text-base">Education</h3>
                   </div>
                   <p className="text-base-content/80">
-                    ปริญญาตรี สาขาความปลอดภัยไซเบอร์ (Cybersecurity)
-                    มหาวิทยาลัยขอนแก่น
+                    Bachelor&apos;s degree in Cybersecurity, Khon Kaen University
                   </p>
                 </div>
               </div>

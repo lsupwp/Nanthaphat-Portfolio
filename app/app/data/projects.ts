@@ -15,7 +15,7 @@ export const projects: Project[] = [
     tech: ["Python", "Go", "Docker", "REST API", "Linux"],
     url: "https://github.com/lsupwp/ThreatMonitor",
     description:
-      "ระบบตรวจสอบ สแกน และเฝ้าระวังภัยคุกคามทางไซเบอร์แบบเรียลไทม์ ตรวจจับความผิดปกติและรวบรวมข้อมูล Threat Intelligence เพื่อคัดกรองความเสี่ยงอัตโนมัติ",
+      "Real-time threat intelligence and security monitoring system that detects anomalies and collects threat intelligence to automatically triage risks.",
   },
   {
     id: "one-click-scan",
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     tech: ["Python", "Go", "Nmap API", "Docker"],
     url: "https://github.com/lsupwp/OneClickScan",
     description:
-      "เครื่องมือสแกนและสำรวจช่องโหว่ทางไซเบอร์แบบครบวงจร ครอบคลุม Subdomain Discovery, Nmap Service Scanning และสรุปรายงานความเสี่ยงอัตโนมัติ",
+      "All-in-one web vulnerability scanner covering subdomain discovery, Nmap service scanning, and automated risk reporting.",
   },
   {
     id: "volun-link",
@@ -33,6 +33,6 @@ export const projects: Project[] = [
     tech: ["Next.js", "Node.js", "Docker", "QR Engine"],
     url: "https://github.com/lsupwp/VolunLink",
     description:
-      "แพลตฟอร์มบริหารจัดการกิจกรรมจิตอาสาและระบบเช็กอินเข้าร่วมงานด้วย QR Code อัตโนมัติ พร้อมระบบติดตามสถานะการเข้าร่วมกิจกรรม",
+      "Volunteer activity management platform with automatic QR code check-in and participation tracking.",
   },
 ];

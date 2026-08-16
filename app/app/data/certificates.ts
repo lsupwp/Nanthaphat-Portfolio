@@ -32,7 +32,7 @@ export const certificates: Certificate[] = [
   {
     id: "msu-hackathon-2026",
     title: "Informatics MSU Hackathon 2026",
-    issuer: "คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม",
+    issuer: "Faculty of Informatics, Mahasarakham University",
     description:
       "Ranked 3rd Place (2nd Runner-up) / Artificial Intelligence & Cybersecurity Challenge",
     category: "Hackathon",

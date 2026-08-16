@@ -13,7 +13,7 @@ export const allCertificates: CertificateItem[] = [
     id: "msu-hackathon-2026",
     category: "CTF",
     title: "Informatics MSU Hackathon 2026 (Cybersecurity Challenge)",
-    organizer: "คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม",
+    organizer: "Faculty of Informatics, Mahasarakham University",
     detail:
       "Ranked 3rd Place (2nd Runner-up) / Artificial Intelligence & Cybersecurity Challenge",
     imageUrl: "/Certificate/CTF/Cert_MSU_CTF_2026_Rank3.png",
@@ -33,7 +33,7 @@ export const allCertificates: CertificateItem[] = [
     category: "CTF",
     title: "HACK THE SCAMMER CTF 2025",
     organizer:
-      "สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช. / NCSA) ร่วมกับ กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
+      "National Cyber Security Agency (NCSA) with Ministry of Digital Economy and Society",
     detail: "Participant / Online Capture The Flag Competition",
     imageUrl:
       "/Certificate/preview/Cert_Hack_The_Scammer_CTF_2025_NCSA_preview.png",
@@ -74,10 +74,8 @@ export const allCertificates: CertificateItem[] = [
   {
     id: "cybersecurity-foundation-2026",
     category: "E-Learning",
-    title:
-      "หลักสูตรด้านความมั่นคงปลอดภัยไซเบอร์ ระดับพื้นฐาน (Cybersecurity Foundation Course)",
-    organizer:
-      "สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช. / NCSA e-Learning)",
+    title: "Cybersecurity Foundation Course (Basic Cybersecurity)",
+    organizer: "National Cyber Security Agency (NCSA e-Learning)",
     detail: "Completed 21 hours of foundational cybersecurity training",
     imageUrl:
       "/Certificate/preview/Cert_Basic_Cybersecurity_2026_Nanthaphat_preview.png",
@@ -98,9 +96,9 @@ export const allCertificates: CertificateItem[] = [
   {
     id: "cyber-warrior-2025",
     category: "Hackathon",
-    title: "โครงการ Cyber Warrior Hackathon 2025",
+    title: "Cyber Warrior Hackathon 2025",
     organizer:
-      "กองบัญชาการตำรวจสืบสวนสอบสวนอาชญากรรมทางเทคโนโลยี (บช.สอท.) ร่วมกับ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT)",
+      "Technology Crime Suppression Division with King Mongkut's University of Technology Thonburi (KMUTT)",
     detail: "Completed intensive training and hackathon program (6 - 28 June 2025)",
     imageUrl: "/Certificate/Hackthon/Cert_Cyber_Warrior_Hackathon_2025_KMUTT.jpg",
     fileUrl: "/Certificate/Hackthon/Cert_Cyber_Warrior_Hackathon_2025_KMUTT.jpg",
