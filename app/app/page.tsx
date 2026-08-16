@@ -1,5 +1,7 @@
 import Link from "next/link";
 import ThemeToggle from "@/components/theme-toggle";
+import Reveal from "@/components/reveal";
+import CertificateCard from "@/components/certificate-card";
 import {
   DownloadIcon,
   ExternalLinkIcon,
@@ -9,6 +11,8 @@ import {
   MailIcon,
   ShieldIcon,
 } from "@/components/icons";
+import { projects } from "@/data/projects";
+import { certificates } from "@/data/certificates";
 
 const PROFILE = {
   name: "Nanthaphat Phetsanghan",
@@ -17,38 +21,11 @@ const PROFILE = {
   bio: "นักศึกษาปริญญาตรีสาขาความปลอดภัยไซเบอร์ มหาวิทยาลัยขอนแก่น มีความชื่นชอบและสนใจเชิงลึกในด้าน Penetration Testing, Web Exploitation, การสร้าง Security Automation Tools ด้วย Python & Go รวมถึงการประยุกต์ใช้ AI / Local LLM ในงาน Security และการใช้งาน Linux System",
 };
 
-const EMAIL = "your-email@example.com";
+const EMAIL = "lsupwp@gmail.com";
 const SOCIALS = {
   github: "https://github.com/lsupwp",
-  linkedin: "https://www.linkedin.com/in/lsupwp",
+  linkedin: "https://th.linkedin.com/in/nanthaphat-phetsanghan-2287ba2b7",
 };
-
-const PROJECTS = [
-  {
-    name: "ThreatMonitor",
-    subtitle: "Threat Intelligence & Security Monitoring System",
-    tech: ["Python", "Go", "Docker", "REST API", "Linux"],
-    url: "https://github.com/lsupwp/ThreatMonitor",
-    detail:
-      "ระบบตรวจสอบ สแกน และเฝ้าระวังภัยคุกคามทางไซเบอร์แบบเรียลไทม์ ตรวจจับความผิดปกติและรวบรวมข้อมูล Threat Intelligence เพื่อคัดกรองความเสี่ยงอัตโนมัติ",
-  },
-  {
-    name: "OneClickScan",
-    subtitle: "Automated Web Security Scanner",
-    tech: ["Python", "Go", "Nmap API", "Docker"],
-    url: "https://github.com/lsupwp/OneClickScan",
-    detail:
-      "เครื่องมือสแกนและสำรวจช่องโหว่ทางไซเบอร์แบบครบวงจร ครอบคลุม Subdomain Discovery, Nmap Service Scanning และสรุปรายงานความเสี่ยงอัตโนมัติ",
-  },
-  {
-    name: "VolunLink",
-    subtitle: "Volunteer Activity & Management Platform",
-    tech: ["Next.js", "Node.js", "Docker", "QR Engine"],
-    url: "https://github.com/lsupwp/VolunLink",
-    detail:
-      "แพลตฟอร์มบริหารจัดการกิจกรรมจิตอาสาและระบบเช็กอินเข้าร่วมงานด้วย QR Code อัตโนมัติ พร้อมระบบติดตามสถานะการเข้าร่วมกิจกรรม",
-  },
-];
 
 const FOCUS = [
   "Web Exploitation & Pentesting (SQLi, XSS, SSRF, RCE, API Hacking)",
@@ -90,27 +67,6 @@ const SKILLS = {
   },
 };
 
-const CERTIFICATES = [
-  {
-    name: "Bloody Xmas 2025 (CTF Event)",
-    org: "SEC PLAYGROUND",
-    meta: "Ranked 14th out of 77 teams",
-    file: "/Certificate/preview/Cert_BloodyXmas_CTF_2025_preview.png",
-  },
-  {
-    name: "HKCERT Capture the Flag Challenge 2025",
-    org: "HKCERT & Digital Policy Office",
-    meta: "International Category",
-    file: "/Certificate/preview/Cert_HKCERT_CTF_2025_preview.png",
-  },
-  {
-    name: "Informatics MSU Hackathon 2026",
-    org: "คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม",
-    meta: "Ranked 3rd Place (2nd Runner-up) / Artificial Intelligence & Cybersecurity Challenge",
-    file: "/Certificate/CTF/Cert_MSU_CTF_2026_Rank3.png",
-  },
-];
-
 const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
@@ -118,6 +74,9 @@ const NAV_LINKS = [
   { href: "#certificates", label: "Certificates" },
   { href: "#contact", label: "Contact" },
 ];
+
+const BADGE_HOVER =
+  "transition duration-300 hover:scale-105 hover:border-primary hover:text-primary";
 
 function SectionHeading({
   id,
@@ -198,7 +157,10 @@ export default function Home() {
                 {PROFILE.bio}
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a href="#" className="btn btn-primary">
+                <a
+                  href="#"
+                  className="btn btn-primary transition duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                >
                   <DownloadIcon className="h-4 w-4" />
                   Download CV / Resume
                 </a>
@@ -206,7 +168,7 @@ export default function Home() {
                   href={SOCIALS.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-outline"
+                  className="btn btn-outline transition duration-300 hover:scale-[1.03]"
                 >
                   <GithubIcon className="h-4 w-4" />
                   GitHub
@@ -215,7 +177,7 @@ export default function Home() {
                   href={SOCIALS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-outline"
+                  className="btn btn-outline transition duration-300 hover:scale-[1.03]"
                 >
                   <LinkedinIcon className="h-4 w-4" />
                   LinkedIn
@@ -224,196 +186,187 @@ export default function Home() {
             </div>
 
             <div className="flex justify-center lg:justify-end">
-              <div className="avatar placeholder">
-                <div className="w-48 rounded-full bg-gradient-to-br from-primary to-zinc-900 text-base-content sm:w-56">
-                  <span className="text-5xl font-bold text-white">NP</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-5xl px-4">
-          <SectionHeading
-            id="about"
-            eyebrow="About & Education"
-            title="About Me"
-          />
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div className="card bg-base-200">
-              <div className="card-body">
-                <div className="flex items-center gap-2 text-primary">
-                  <GraduationIcon className="h-5 w-5" />
-                  <h3 className="card-title text-base">Education</h3>
-                </div>
-                <p className="text-base-content/80">
-                  ปริญญาตรี สาขาความปลอดภัยไซเบอร์ (Cybersecurity)
-                  มหาวิทยาลัยขอนแก่น
-                </p>
-              </div>
-            </div>
-            <div className="card bg-base-200">
-              <div className="card-body">
-                <div className="flex items-center gap-2 text-primary">
-                  <ShieldIcon className="h-5 w-5" />
-                  <h3 className="card-title text-base">Core Focus</h3>
-                </div>
-                <ul className="space-y-2 text-sm text-base-content/80">
-                  {FOCUS.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-5xl px-4">
-          <SectionHeading
-            id="projects"
-            eyebrow="Featured Projects"
-            title="Selected Work"
-          />
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {PROJECTS.map((project) => (
-              <a
-                key={project.name}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card bg-base-200 transition hover:bg-base-300"
-              >
-                <div className="card-body">
-                  <h3 className="card-title text-base">{project.subtitle}</h3>
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="badge badge-outline badge-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+              <div className="relative">
+                <div className="absolute -inset-4 rounded-full bg-[conic-gradient(from_0deg,#2563eb,transparent,#2563eb,transparent)] opacity-60 blur-2xl animate-[spin_6s_linear_infinite]" />
+                <div className="avatar placeholder relative">
+                  <div className="w-48 rounded-full bg-gradient-to-br from-primary to-zinc-900 text-base-content sm:w-56">
+                    <span className="text-5xl font-bold text-white">NP</span>
                   </div>
-                  <p className="text-sm text-base-content/70 leading-relaxed">
-                    {project.detail}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-5xl px-4">
+          <Reveal>
+            <SectionHeading
+              id="about"
+              eyebrow="About & Education"
+              title="About Me"
+            />
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="card bg-base-200">
+                <div className="card-body">
+                  <div className="flex items-center gap-2 text-primary">
+                    <GraduationIcon className="h-5 w-5" />
+                    <h3 className="card-title text-base">Education</h3>
+                  </div>
+                  <p className="text-base-content/80">
+                    ปริญญาตรี สาขาความปลอดภัยไซเบอร์ (Cybersecurity)
+                    มหาวิทยาลัยขอนแก่น
                   </p>
                 </div>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-5xl px-4">
-          <SectionHeading
-            id="skills"
-            eyebrow="Technical Skills"
-            title="Skills & Tools"
-          />
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {Object.values(SKILLS).map((group) => (
-              <div key={group.label} className="card bg-base-200">
-                <div className="card-body">
-                  <h3 className="card-title text-base">{group.label}</h3>
-                  <div className="flex flex-wrap gap-1.5">
-                    {group.items.map((item) => (
-                      <span key={item} className="badge badge-outline badge-md">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-5xl px-4">
-          <div className="flex items-end justify-between gap-4">
-            <SectionHeading
-              id="certificates"
-              eyebrow="Certificates"
-              title="Highlights"
-            />
-            <Link href="/certificates" className="btn btn-outline btn-sm">
-              View All Certificates
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {CERTIFICATES.map((cert) => (
-              <div
-                key={cert.name}
-                className="card group relative overflow-hidden bg-base-200"
-              >
+              <div className="card bg-base-200">
                 <div className="card-body">
                   <div className="flex items-center gap-2 text-primary">
                     <ShieldIcon className="h-5 w-5" />
-                    <span className="badge badge-primary badge-sm">
-                      Certificate
-                    </span>
+                    <h3 className="card-title text-base">Core Focus</h3>
                   </div>
-                  <h3 className="card-title text-base leading-snug">
-                    {cert.name}
-                  </h3>
-                  <p className="text-sm font-medium text-base-content/80">
-                    {cert.org}
-                  </p>
-                  <p className="text-sm text-base-content/60">{cert.meta}</p>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center bg-base-100/95 p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={cert.file}
-                    alt={cert.name}
-                    className="h-full w-full rounded-box border border-base-300 object-contain"
-                  />
+                  <ul className="space-y-2 text-sm text-base-content/80">
+                    {FOCUS.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          </Reveal>
         </section>
 
         <section className="mx-auto w-full max-w-5xl px-4">
-          <SectionHeading
-            id="contact"
-            eyebrow="Contact"
-            title="Get in Touch"
-          />
-          <div className="card mt-8 bg-base-200">
-            <div className="card-body items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <a
-                href={`mailto:${EMAIL}`}
-                className="inline-flex items-center gap-3 text-base font-medium hover:text-primary"
-              >
-                <MailIcon className="h-5 w-5 text-primary" />
-                {EMAIL}
-              </a>
-              <div className="flex items-center gap-3">
+          <Reveal>
+            <SectionHeading
+              id="projects"
+              eyebrow="Featured Projects"
+              title="Selected Work"
+            />
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {projects.map((project) => (
                 <a
-                  href={SOCIALS.github}
+                  key={project.id}
+                  href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-outline"
+                  className="card bg-base-200 transition duration-300 hover:-translate-y-1 hover:bg-base-300"
                 >
-                  <GithubIcon className="h-4 w-4" />
-                  GitHub
+                  <div className="card-body">
+                    <h3 className="card-title text-base">
+                      {project.subtitle}
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className={`badge badge-outline badge-sm h-auto whitespace-normal py-1 ${BADGE_HOVER}`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-sm text-base-content/70 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
                 </a>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="mx-auto w-full max-w-5xl px-4">
+          <Reveal>
+            <SectionHeading
+              id="skills"
+              eyebrow="Technical Skills"
+              title="Skills & Tools"
+            />
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {Object.values(SKILLS).map((group) => (
+                <div key={group.label} className="card bg-base-200">
+                  <div className="card-body">
+                    <h3 className="card-title text-base">{group.label}</h3>
+                    <div className="flex flex-wrap gap-1.5">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className={`badge badge-outline badge-md h-auto whitespace-normal py-1 ${BADGE_HOVER}`}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="mx-auto w-full max-w-5xl px-4">
+          <Reveal>
+            <div className="flex items-end justify-between gap-4">
+              <SectionHeading
+                id="certificates"
+                eyebrow="Certificates"
+                title="Highlights"
+              />
+              <Link href="/certificates" className="btn btn-outline btn-sm">
+                View All Certificates
+              </Link>
+            </div>
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {certificates.map((cert) => (
+                <CertificateCard key={cert.id} certificate={cert} />
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="mx-auto w-full max-w-5xl px-4">
+          <Reveal>
+            <SectionHeading
+              id="contact"
+              eyebrow="Contact"
+              title="Get in Touch"
+            />
+            <div className="card mt-8 bg-base-200">
+              <div className="card-body items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
                 <a
-                  href={SOCIALS.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex items-center gap-3 text-base font-medium hover:text-primary"
                 >
-                  <LinkedinIcon className="h-4 w-4" />
-                  LinkedIn
-                  <ExternalLinkIcon className="h-3 w-3" />
+                  <MailIcon className="h-5 w-5 text-primary" />
+                  {EMAIL}
                 </a>
+                <div className="flex items-center gap-3">
+                  <a
+                    href={SOCIALS.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline transition duration-300 hover:scale-[1.03]"
+                  >
+                    <GithubIcon className="h-4 w-4" />
+                    GitHub
+                  </a>
+                  <a
+                    href={SOCIALS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline transition duration-300 hover:scale-[1.03]"
+                  >
+                    <LinkedinIcon className="h-4 w-4" />
+                    LinkedIn
+                    <ExternalLinkIcon className="h-3 w-3" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
 
