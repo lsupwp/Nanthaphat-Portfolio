@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Nanthaphat Phetsanghan (lsupwp)
+
+Personal portfolio website for a cybersecurity student & security developer.
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- React 19
+- TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [daisyUI 5](https://daisyui.com)
+- [Framer Motion](https://motion.dev) (section reveals + modal animations)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Other commands:
 
-## Learn More
+```bash
+npm run lint       # eslint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+├── app/                        # Next.js App Router source
+│   ├── layout.tsx              # Root layout (metadata, theme init script)
+│   ├── page.tsx                # Home page (/)
+│   ├── globals.css             # Tailwind + daisyUI theme config
+│   ├── certificates/
+│   │   └── page.tsx            # /certificates page
+│   ├── components/
+│   │   ├── theme-toggle.tsx    # Light/dark toggle
+│   │   ├── icons.tsx           # Inline SVG icons
+│   │   ├── reveal.tsx          # Framer Motion scroll reveal wrapper
+│   │   ├── certificate-card.tsx# Home highlight card (hover preview + flip)
+│   │   └── certificates-view.tsx# Full certificate grid + modal
+│   └── data/
+│       ├── projects.ts         # Featured projects data
+│       ├── certificates.ts     # Home highlight certificates (3)
+│       └── all-certificates.ts # All certificates for /certificates
+├── public/
+│   ├── profile.jpeg            # Profile image
+│   └── Certificate/            # Certificate files + previews
+│       ├── CTF/
+│       ├── E-Learning/
+│       ├── Hackthon/
+│       └── preview/            # Rendered PNG previews (for PDFs)
+├── next.config.ts
+├── tsconfig.json               # Path alias: @/* -> ./app/*
+└── package.json
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Theming
 
-## Deploy on Vercel
+- daisyUI `light` / `dark` themes, controlled via `data-theme` attribute on `<html>`.
+- Primary color is `#2563eb` (set in `app/globals.css` for both themes).
+- Dark is the default; the selected theme is persisted in `localStorage` (`theme`).
+- The init script in `layout.tsx` runs pre-paint to avoid a flash; `suppressHydrationWarning` is set on `<html>` because of it.
+- The `dark:` Tailwind variant is bound to `data-theme="dark"` via `@custom-variant` in `globals.css`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All page content lives in `app/data/*.ts` — edit those files to change projects,
+certificates, skills, etc. Certificate previews for PDFs are generated PNGs kept
+in `public/Certificate/preview/`.
