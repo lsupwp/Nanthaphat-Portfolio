@@ -146,7 +146,7 @@ export default function Home() {
         <section id="home" className="mx-auto w-full max-w-5xl px-4">
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
             <div>
-              <p className="badge badge-primary badge-lg font-medium">
+              <p className="badge badge-primary badge-lg h-auto whitespace-normal py-1 text-center font-medium">
                 {PROFILE.title}
               </p>
               <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
