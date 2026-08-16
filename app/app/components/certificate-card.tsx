@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ShieldIcon } from "@/components/icons";
 import type { Certificate } from "@/data/certificates";
+import { assetPath } from "@/lib/site";
 
 export default function CertificateCard({
   certificate,
@@ -33,7 +34,7 @@ export default function CertificateCard({
           <div className="absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-25">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={certificate.imageUrl}
+              src={assetPath(certificate.imageUrl)}
               alt={certificate.title}
               className="h-full w-full object-cover"
             />
@@ -61,7 +62,7 @@ export default function CertificateCard({
         <div className="card absolute inset-0 overflow-hidden bg-base-100 [backface-visibility:hidden] [transform:rotateY(180deg)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={certificate.imageUrl}
+            src={assetPath(certificate.imageUrl)}
             alt={certificate.title}
             className="h-full w-full object-cover"
           />

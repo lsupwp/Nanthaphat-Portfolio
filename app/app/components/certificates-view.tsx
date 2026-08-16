@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ShieldIcon } from "@/components/icons";
 import type { CertificateItem } from "@/data/all-certificates";
+import { assetPath } from "@/lib/site";
 
 const CATEGORIES = [
   { key: "CTF", label: "Capture the Flag (CTF)" },
@@ -41,7 +42,7 @@ export default function CertificatesView({
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={cert.imageUrl}
+                    src={assetPath(cert.imageUrl)}
                     alt={cert.title}
                     className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-40"
                   />
@@ -100,7 +101,7 @@ export default function CertificatesView({
               <div className="mt-4 overflow-hidden rounded-box border border-base-300 bg-base-100">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={selected.imageUrl}
+                  src={assetPath(selected.imageUrl)}
                   alt={selected.title}
                   className="max-h-[65vh] w-full object-contain"
                 />

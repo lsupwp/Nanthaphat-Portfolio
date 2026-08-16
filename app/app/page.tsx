@@ -14,6 +14,7 @@ import {
 } from "@/components/icons";
 import { projects } from "@/data/projects";
 import { certificates } from "@/data/certificates";
+import { BASE_PATH } from "@/lib/site";
 
 const PROFILE = {
   name: "Nanthaphat Phetsanghan",
@@ -191,7 +192,7 @@ export default function Home() {
                 <div className="absolute -inset-4 rounded-full bg-[conic-gradient(from_0deg,#2563eb,transparent,#2563eb,transparent)] opacity-60 blur-2xl animate-[spin_6s_linear_infinite]" />
                 <div className="relative h-48 w-48 overflow-hidden rounded-full ring-4 ring-primary/40 sm:h-56 sm:w-56">
                   <Image
-                    src="/profile.jpeg"
+                    src={`${BASE_PATH}/profile.jpeg`}
                     alt="Nanthaphat Phetsanghan"
                     width={224}
                     height={224}
